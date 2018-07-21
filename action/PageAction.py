@@ -1,15 +1,15 @@
 # encoding = utf-8
-from selenium import  webdriver
-from config.VarConfig  import  ieDriverFilePath
-from config.VarConfig import  chromeDriverFilePath
-from config.VarConfig import  firefoxDriverFilePath
-from util.ObjectMap import  getElement
-from util.ClipboardUtil import  Clipboard
-from util.KeyBoardUtil import  KeyboardKeys
+from selenium import webdriver
+from config.VarConfig import ieDriverFilePath
+from config.VarConfig import chromeDriverFilePath
+#from config.VarConfig import firefoxDriverFilePath
+from util.ObjectMap import getElement
+#from util.ClipboardUtil import Clipboard
+#from util.KeyBoardUtil import KeyboardKeys
 from util.DirAndTime import *
 from util.WaitUtil import  WaitUtil
 from selenium.webdriver.chrome.options import Options
-import  time
+import time
 
 
 # 定义全局的 driver 变量
@@ -19,13 +19,14 @@ waitUtil = None
 
 def open_browser(browserName, *arg):
     # 打开浏览器
-    global  driver,waitUtil
+    global driver,waitUtil
     try:
         if browserName.lower() == 'ie':
             driver = webdriver.Ie(executable_path = ieDriverFilePath)
         elif browserName.lower() == 'chrome':
             # 创建 Chrome 浏览器的一个 Options 实例对象
             chrome_options = Options()
+            chrome_options.add_argument('--proxy-server=http://100.67.154.166:51201')
             # 添加屏蔽 --ignore -certificate -errors 提示信息的设置参数项
             chrome_options.add_experimental_option(
                 "excludeSwitches",
@@ -35,8 +36,7 @@ def open_browser(browserName, *arg):
                 chrome_options = chrome_options
             )
         else:
-            driver = webdriver.Firefox(
-                executable_path = firefoxDriverFilePath)
+            driver = webdriver.Firefox()
         # driver 对象创建成功胡，创建等待类实例对象
         waitUtil = WaitUtil(driver)
     except Exception as e:
@@ -181,10 +181,12 @@ def capture_screen(*arg):
     # 获取当期时间，精确到毫秒
     currTime = getCurrentTime()
     # 拼接异常图片保存的绝对路径及名称
-    picNameAndPath = str(createCurrentDateDir())+"\\"+str(currTime)+".png"
+    picNameAndPath = str(createCurrentDateDir())+"/"+str(currTime)+".png"
     try:
         # 截取屏幕图片，并保存为本地文件
-        driver.get_screentshot_as_file(picNameAndPath.replace('\\',r'\\'))
+        print(picNameAndPath)
+        driver.get_screenshot_as_file(picNameAndPath)
+
     except Exception as e:
         raise e
 
@@ -214,9 +216,17 @@ def waitVisibilityOfElementLocated(locationType,locatorExpression,*arg):
         raise e
 
 
+'''
+open_browser("Chrome")
+visit_url("https://cas.env12.shuguang.com/cas/login")
 
 
+# In[6]:
+sleep(5)
+#waitFrameToBeAvailableAndSwitchToIt("xpath","//div[@class=\"form-title\"]/preceding::div")
+input_string("id","username","admin")
 
+'''
 
 
 

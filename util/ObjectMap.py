@@ -15,13 +15,13 @@ def getElement(driver, locateType, locatorExpression):
 # 获取多个相同页面元素对象，以list返回
 def getElements(driver, locateType, locatorExpression):
     try:
-        elements = WebDriverWait(driver, 30).until \
+        elements = WebDriverWait(driver, 3).until \
             (lambda x: x.find_elements(by=locateType, value=locatorExpression))
         return elements
     except Exception as e:
         raise e
 
-
+'''
 if __name__ == '__main__':
     from selenium import webdriver
 
@@ -38,3 +38,4 @@ if __name__ == '__main__':
     print(len(aList))
     driver.quit()
     driver.find_element_by_xpath().send_keys()
+'''

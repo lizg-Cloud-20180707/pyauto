@@ -1,25 +1,34 @@
 # encoding = utf-8
 from . import *
-#from . import CreateContacts
-from .WriteTestResult import writeTestResult
+# from . import CreateContacts
+from testScripts.WriteTestResult import writeTestResult
+from util import ParseExcel
 from util.Log import *
+
+print("TestCreateRds---->")
 
 def TestCreateRds():
     try:
+        print("caseSheet->")
         # 测试Excel文件中的sheet名获取sheet对象
-        caseSheet = excelObj.getSheetByname(u"测试用例")
+        caseSheet = excelObj.getSheetByIndex(0)
+        print("通过序号获取 sheet 对象的名字---->:", excelObj.getSheetByIndex(0).title)
+
         # 获取测试用例sheet中是否执行列对象
         isExecuteColumn = excelObj.getColumn(caseSheet, testCase_isExecute)
+        print(type(isExecuteColumn))
         # 记录执行成功的用例个数
         successfulCase = 0
         # 记录需要执行的用例个数
         requiredCase = 0
+        print("记录需要执行的用例个数")
         for idx, i in enumerate(isExecuteColumn[1:]):
             # 因为用例sheet中第一行为标题行，无须执行
+            print("因为用例sheet中第一行为标题行，无须执行----->")
             caseName = excelObj.getCellOfValue(caseSheet,
                                                rowNo= idx + 2, colsNo= testCase_testCaseName)
             # 循环遍历"测试用例"表中的测试用例，执行被设置为执行的用例
-            if i.value.lower() == 'y' :
+            if i.value.lower() == 'y':
                 requiredCase += 1
                 # 获取测试用例表中，第idx+1行中用例执行时使用的框架类型
                 useFrameWorkName = excelObj.getCellOfValue(
@@ -29,6 +38,7 @@ def TestCreateRds():
                 stepSheetName = excelObj.getCellOfValue(
                     caseSheet, rowNo= idx+2,colsNo=testCase_testStepSheetName
                 )
+
                 dataSheetName = excelObj.getCellOfValue(
                     caseSheet, rowNo= idx+2,colsNo=testCase_dataSourceSheetName
                 )
@@ -48,23 +58,24 @@ def TestCreateRds():
                     result = 1
 
                     if result:
-#                        logging.info(u"用例"%s "  执行成功 " %caseName)
+                        logging.info(u"用例%s执行成功" %caseName)
                         successfulCase += 1
                         writeTestResult(caseSheet, rowNo= idx + 2,
                                         colsNo= "testCase", testResult= "pass")
                     else:
-#                        logging.info(u"用例"%s"执行失败"%caseName)
+                        logging.info(u"用例%s执行失败"%caseName)
                         writeTestResult(caseSheet, rowNo= idx + 2,
                                         colsNo= "testCase", testResult= "faild")
-                elif useFrameWorkName == u"关键字":
+                elif useFrameWorkName == "关键字":
                     logging.info(u"********调用关键字驱动*********")
+                    print("stepSheetName"+"----->")
                     caseStepObj = excelObj.getSheetByName(stepSheetName)
                     stepNums = excelObj.getRowsNumber(caseStepObj)
                     successfulSteps = 0
                     logging.info(u"测试用例共'%s'步" %stepNums)
                     for index in range(2, stepNums + 1):
                         stepRow = excelObj.getRow(caseStepObj, index)
-                        #获取关键字作为调用的函数名
+                        # 获取关键字作为调用的函数名
                         keyWord = stepRow[testStep_keyWords - 1].value
                         # 获取操作元素定位方式作为调用的函数的参数
                         locationType = stepRow[testStep_locationType -1].value
@@ -125,3 +136,5 @@ def TestCreateRds():
                      %(len(isExecuteColumn)-1,requiredCase,successfulCase))
     except Exception as e:
         logging.debug(u"程序本身发生异常\n %s" %traceback.format_exc())
+
+

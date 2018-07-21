@@ -23,11 +23,11 @@ class ParseExcel(object):
         self.excelFile = excelPathAndName
         return  self.workbook
 
-    def getSheetByname(self,sheetName):
+    def getSheetByName(self, sheetName):
         # 根据 sheet 名获取该 sheet 对象
         try:
             sheet = self.workbook.get_sheet_by_name(sheetName)
-            return  sheet
+            return sheet
         except Exception as e:
             raise e
 
@@ -61,9 +61,7 @@ class ParseExcel(object):
         # 获取 sheet 中某一行，返回的是这一行所有的数据内容组成的 tuple,
         # 下表从 1 开始，sheet.rows[1]表示第一行
         try:
-            #print(sheet.rows[rowNo])
-             for cell in list(sheet.rows)[rowNo-1]:
-                print(cell.value)
+            return list(sheet.rows)[rowNo-1]
         except Exception as e:
             raise e
 
@@ -75,6 +73,15 @@ class ParseExcel(object):
                     print(cell.value)
         except Exception as e:
             raise e
+
+    def getColumn(self,sheet,colNo):
+        try:
+            #print(sheet.rows[rowNo])
+            return list(sheet.columns)[colNo-1]
+
+        except Exception as e:
+            raise e
+
 
     def getCellOfValue(self,sheet,coordinate = None,
                        rowNo = None,colsNo = None):
@@ -89,7 +96,7 @@ class ParseExcel(object):
         elif coordinate is None and rowNo is not None and \
             colsNo is not None:
             try:
-                return sheet.cell(row = rowNo,cols = colsNo).value
+                return sheet.cell(row = rowNo,column = colsNo).value
             except Exception as e:
                 raise e
         else:
@@ -164,24 +171,29 @@ class ParseExcel(object):
         else:
             raise Exception("Insufficient Coordinates of cell !")
 
-
+'''
 if __name__ == '__main__':
     # 测试代码
 
     pe = ParseExcel()
-    pe.loadWorkBook(u'/Users/dingyq/pyauto/testdata/test.xlsx')
-    print("通过名称获取 sheet 对象的名字:", \
-          pe.getSheetByname(u'联系人'))
-    print("通过 index 序号获取 sheet 对象的名字：", \
-          pe.getSheetByIndex(0).title)
-    sheet = pe.getSheetByIndex(0)
-    #print(pe.getColsNumber(sheet))
-    #print(pe.getRowsNumber(sheet))
-    print(pe.getRow(sheet,1))
+    pe.loadWorkBook(u'/Users/lizg2018/PycharmProjects/pyauto/testdata/test.xlsx')
 
-    pe.writeCell(sheet,u'我爱祖国', rowNo = pe.getRowsNumber(sheet)+1,
+#    sheet = pe.getSheetByIndex(0)
+    sheet = pe.getSheetByName('测试用例')
+    print(type(pe.getSheetByIndex(0)),type(pe.getSheetByName('测试用例')))
+
+    caseStepObj = pe.getSheetByName('创建实例')
+    stepNums = pe.getRowsNumber(caseStepObj)
+    print("测试用例共'%s'步" %stepNums)
+#
+# 获得sheet名
+    print(sheet.title)
+# 获得当前正在显示的sheet, 也可以用wb.get_active_sheet()
+#    sheet = wb.active
+    pe.writeCell(sheet,u'我爱祖国', rowNo = pe.getRowsNumber(sheet)+1,\
                  colsNo = pe.getStartColNumber(sheet))
-    pe.writeCellCurrentTime(sheet,rowNo = pe.getRowsNumber(sheet),
+    pe.writeCellCurrentTime(sheet,rowNo = pe.getRowsNumber(sheet),\
                  colsNo = pe.getStartColNumber(sheet)+1)
     #print(pe.getRows(sheet))
 
+'''

@@ -5,13 +5,13 @@ from .import *
 def writeTestResult(sheetObj, rowNo, colsNo, testResult,
                     errorinfo = None, picPath = None):
     # 测试通过结果信息为绿色，失败为红色
-    colorDict = {"pass": green, "faild": red, "": None}
+    colorDict = {"pass": 'green', "faild": 'red', "": None}
 
     # 因为"测试用例"工作表和"用例步骤sheet表"中都有测试执行时间和
     # 测试结果列，定义此字典对象是为了区分具体应该写哪个工作表
     colsDict = {
         "testCase": [testCase_runTime, testCase_testResult],
-        "caseStep": [testStep_runTime, testStep_testResult],
+        "testStep": [testStep_runTime, testStep_testResult],
         "dataSheet": [dataSource_runTime, dataSource_result]
     }
 
@@ -44,5 +44,5 @@ def writeTestResult(sheetObj, rowNo, colsNo, testResult,
                 excelObj.writeCell(sheetObj, content="",
                                    rowNo=rowNo, colsNo=testStep_errorPic)
     except Exception as e:
-        print(u"写excel时发生异常")
+        print("写excel时发生异常")
         print(traceback.print_exc())

@@ -1,7 +1,7 @@
 # encoding = utf- 8
 
 from action.PageAction import *
-from util.ParseExcel import  ParseExcel
+from util.ParseExcel import ParseExcel
 from config.VarConfig import *
 import time
 import traceback
@@ -20,6 +20,7 @@ reload(sys)
 # 创建解析 Excel 对象
 
 excelObj = ParseExcel()
-
+print(dataFilePath)
 # 将 Excel 数据文件加载到内存
 excelObj.loadWorkBook(dataFilePath)
+print("testScript-->"+"通过名称获取 sheet 对象的名字:")

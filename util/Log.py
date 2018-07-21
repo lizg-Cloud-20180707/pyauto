@@ -4,7 +4,7 @@ import logging.config
 from config.VarConfig import parentDirPath
 
 
-print(parentDirPath + u"/config/Logger.conf")
+print("Log.py----->"+parentDirPath + "/config/Logger.conf")
 # 读取日志配置文件
 logging.config.fileConfig(parentDirPath + u"/config/Logger.conf")
 # 选择一个日志格式

@@ -4,24 +4,27 @@ import os
 
 parentDirPath = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 
+
 try:
     if os.name == "posix":
         ieDriverFilePath = ""
-        chromeDriverFilePath = parentDirPath +u"/webdriver/others/chromedriver"
-        firefoxDriverPath = parentDirPath + u"/webdriver/others/geckodriver"
+        chromeDriverFilePath = parentDirPath +"/webdriver/others/chromedriver"
+        firefoxDriverPath = parentDirPath + "/webdriver/others/geckodriver"
         # 异常图片存放目录
-        screenPicturesDir = parentDirPath + u"/exceptionpictures/"
+        screenPicturesDir = parentDirPath + "/exceptionpictures/"
         # 测试数据文件存放绝对路径
-        dataFilePath = parentDirPath + u"/testdata/test.xlsx"
+        dataFilePath = parentDirPath + "/testdata/test.xlsx"
+        print("os" + dataFilePath)
 
     elif os.name == "nt":
         ieDriverFilePath = ""
         chromeDriverFilePath = parentDirPath +u"\\webdriver\\windows\\chromedriver.exe"
         firefoxDriverPath = parentDirPath + u"\\webdriver\\windows\\geckodriver.exe"
         # 异常图片存放目录
-        screenPicturesDir = parentDirPath + u"\\exceptionpictures\\"
+        screenPicturesDir = parentDirPath + u"/exceptionpictures/"
         # 测试数据文件存放绝对路径
-        dataFilePath = parentDirPath + u"\\testdata\\test.xlsx"
+        dataFilePath = parentDirPath + u"/testdata/test.xlsx"
+
     else:
         print("Error: unknown system name!"+"\n")
         print("    Project will be closed")

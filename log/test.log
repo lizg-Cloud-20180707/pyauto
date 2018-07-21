@@ -1,0 +1,28 @@
+2018 -07 -21 21: 27: 44 TestCreateRds.py[line: 45] INFO --执行测试用例'登录dt-center'---
+2018 -07 -21 21: 27: 44 TestCreateRds.py[line: 70] INFO ********调用关键字驱动*********
+2018 -07 -21 21: 27: 44 TestCreateRds.py[line: 75] INFO 测试用例共'10'步
+2018 -07 -21 21: 27: 46 TestCreateRds.py[line: 118] INFO 执行步骤'打开浏览器'成功
+
+2018 -07 -21 21: 27: 48 TestCreateRds.py[line: 118] INFO 执行步骤'测试网址'成功
+
+2018 -07 -21 21: 27: 51 TestCreateRds.py[line: 118] INFO 执行步骤'等待加载完成'成功
+
+2018 -07 -21 21: 27: 53 TestCreateRds.py[line: 118] INFO 执行步骤'最大化窗口'成功
+
+2018 -07 -21 21: 27: 53 TestCreateRds.py[line: 127] INFO 用例登录dt-center执行失败
+2018 -07 -21 21: 27: 53 TestCreateRds.py[line: 134] INFO 用例创建mysql实例被设置为忽略执行
+2018 -07 -21 21: 27: 53 TestCreateRds.py[line: 136] INFO 共2条用例，1用例被执行，成功执行0条
+2018 -07 -21 21: 33: 49 TestCreateRds.py[line: 45] INFO --执行测试用例'登录dt-center'---
+2018 -07 -21 21: 33: 49 TestCreateRds.py[line: 70] INFO ********调用关键字驱动*********
+2018 -07 -21 21: 33: 49 TestCreateRds.py[line: 75] INFO 测试用例共'10'步
+2018 -07 -21 21: 33: 51 TestCreateRds.py[line: 118] INFO 执行步骤'打开浏览器'成功
+
+2018 -07 -21 21: 33: 54 TestCreateRds.py[line: 118] INFO 执行步骤'测试网址'成功
+
+2018 -07 -21 21: 33: 56 TestCreateRds.py[line: 118] INFO 执行步骤'等待加载完成'成功
+
+2018 -07 -21 21: 33: 58 TestCreateRds.py[line: 118] INFO 执行步骤'最大化窗口'成功
+
+2018 -07 -21 21: 33: 58 TestCreateRds.py[line: 127] INFO 用例登录dt-center执行失败
+2018 -07 -21 21: 33: 58 TestCreateRds.py[line: 134] INFO 用例创建mysql实例被设置为忽略执行
+2018 -07 -21 21: 33: 58 TestCreateRds.py[line: 136] INFO 共2条用例，1用例被执行，成功执行0条

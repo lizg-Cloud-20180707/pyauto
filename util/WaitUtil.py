@@ -62,6 +62,8 @@ class WaitUtil(object):
         except Exception as e:
             # 抛出异常信息给上层调用者
             raise e
+
+''' 
 if __name__ == '__main__':
     from selenium import webdriver
     driver = webdriver.Chrome()
@@ -70,7 +72,7 @@ if __name__ == '__main__':
     waitUtil.frameToBeAvailableAndSwitchToIt("id","x-URS-iframe")
     waitUtil.visibilityOfElementLocated("xpath", "//input[@name='email']")
     driver.quit()
-
+'''
 
 
 
