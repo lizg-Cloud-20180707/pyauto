@@ -91,13 +91,13 @@ def TestCreateRds():
                                                locationExpression.replace("'",'"')
                                                )if locationType and locationExpression else ""
                         if tmpStr:
-                            tmpStr +=",u" + operateValue + "'"\
+                            tmpStr +=",'" + operateValue + "'"\
                                 if operateValue else ""
                         else:
-                            tmpStr += "u'" + operateValue + "'"\
+                            tmpStr += "'" + operateValue + "'"\
                                 if operateValue else ""
                         runStr = keyWord + "(" + tmpStr + ")"
-                        # print runStr
+                        print("run---->" + runStr)
                         try:
                             eval(runStr)
                         except Exception as e:

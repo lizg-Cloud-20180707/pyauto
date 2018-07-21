@@ -44,7 +44,7 @@ def open_browser(browserName, *arg):
 
 def visit_url(url,*arg):
     # 访问某个网址
-    global  driver
+    global driver
     try:
         driver.get(url)
     except Exception as e:
@@ -52,7 +52,7 @@ def visit_url(url,*arg):
 
 def close_browser(*arg):
     # 关闭浏览器
-    global  driver
+    global driver
     try:
         driver.quit()
     except Exception as e:
@@ -73,9 +73,10 @@ def clear(locationType,locatorExpression,*arg):
     except Exception as e:
         raise e
 
-def input_string(locationType,locatorExpression,inputContent):
+def input_string(locationType, locatorExpression, inputContent):
     # 在页面输入框中输入数据
     global driver
+    print("%s %s %s" %(locationType, locatorExpression, inputContent))
     try:
         getElement(driver,locationType,
                    locatorExpression).send_keys(inputContent)
