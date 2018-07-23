@@ -9,7 +9,7 @@ try:
     if os.name == "posix":
         ieDriverFilePath = ""
         chromeDriverFilePath = parentDirPath +"/webdriver/others/chromedriver"
-        firefoxDriverPath = parentDirPath + "/webdriver/others/geckodriver"
+        firefoxDriverFilePath = parentDirPath + "/webdriver/others/geckodriver"
         # 异常图片存放目录
         screenPicturesDir = parentDirPath + "/exceptionpictures/"
         # 测试数据文件存放绝对路径
@@ -19,7 +19,7 @@ try:
     elif os.name == "nt":
         ieDriverFilePath = ""
         chromeDriverFilePath = parentDirPath +u"\\webdriver\\windows\\chromedriver.exe"
-        firefoxDriverPath = parentDirPath + u"\\webdriver\\windows\\geckodriver.exe"
+        firefoxDriverFilePath = parentDirPath + u"\\webdriver\\windows\\geckodriver.exe"
         # 异常图片存放目录
         screenPicturesDir = parentDirPath + u"/exceptionpictures/"
         # 测试数据文件存放绝对路径
