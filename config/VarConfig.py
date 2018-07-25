@@ -8,22 +8,26 @@ parentDirPath = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 try:
     if os.name == "posix":
         ieDriverFilePath = ""
-        chromeDriverFilePath = parentDirPath +"/webdriver/others/chromedriver"
+        chromeDriverFilePath = parentDirPath + "/webdriver/others/chromedriver"
         firefoxDriverFilePath = parentDirPath + "/webdriver/others/geckodriver"
         # 异常图片存放目录
         screenPicturesDir = parentDirPath + "/exceptionpictures/"
         # 测试数据文件存放绝对路径
         dataFilePath = parentDirPath + "/testdata/test.xlsx"
-        print("os" + dataFilePath)
+        # 日志存放路径
+        logFilePath = parentDirPath + "/config/Logger.conf"
+        #print("os" + dataFilePath)
 
     elif os.name == "nt":
         ieDriverFilePath = ""
         chromeDriverFilePath = parentDirPath +u"\\webdriver\\windows\\chromedriver.exe"
         firefoxDriverFilePath = parentDirPath + u"\\webdriver\\windows\\geckodriver.exe"
         # 异常图片存放目录
-        screenPicturesDir = parentDirPath + u"/exceptionpictures/"
+        screenPicturesDir = parentDirPath + u"\\exceptionpictures\\"
         # 测试数据文件存放绝对路径
-        dataFilePath = parentDirPath + u"/testdata/test.xlsx"
+        dataFilePath = parentDirPath + u"\\testdata\\test.xlsx"
+         # 日志存放路径
+        logFilePath = parentDirPath + u"\\config\\Logger.conf"
 
     else:
         print("Error: unknown system name!"+"\n")

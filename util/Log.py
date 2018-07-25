@@ -1,12 +1,14 @@
 # encoding = utf-8
 import logging
 import logging.config
+from config.VarConfig import logFilePath
 from config.VarConfig import parentDirPath
 
 
-print("Log.py----->"+parentDirPath + "/config/Logger.conf")
+print("Log.py----->"+logFilePath)
 # 读取日志配置文件
-logging.config.fileConfig(parentDirPath + u"/config/Logger.conf")
+#logging.config.fileConfig(logFilePath)
+logging.config.fileConfig(parentDirPath + '/config/Logger.conf')
 # 选择一个日志格式
 logger = logging.getLogger("example02")
 
