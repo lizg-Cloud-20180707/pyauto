@@ -1,7 +1,6 @@
 #encording = utf-8
 import win32api
 import win32con
-from selenium.webdriver.common.keys import Keys
 class KeyboardKeys(object):
     '''模拟键盘按键类'''
     VK_CODE = {

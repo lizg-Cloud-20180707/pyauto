@@ -1,16 +1,18 @@
 # encoding = utf-8
+
 from selenium import webdriver
 from config.VarConfig import ieDriverFilePath
 from config.VarConfig import chromeDriverFilePath
 from config.VarConfig import firefoxDriverFilePath
 from util.ObjectMap import getElement
 #from util.ClipboardUtil import Clipboard
-#from util.KeyBoardUtil import KeyboardKeys
+from util.KeyBoardUtil1 import KeyboardKeys
 from util.DirAndTime import *
 from util.WaitUtil import  WaitUtil
 from selenium.webdriver.chrome.options import Options
-import time
 
+import time
+import pyperclip
 
 # 定义全局的 driver 变量
 driver = None
@@ -36,7 +38,7 @@ def open_browser(browserName, *arg):
                 chrome_options = chrome_options
             )
         else:
-            driver = webdriver.Firefox()
+            driver = webdriver.Firefox(executable_path = firefoxDriverFilePath)
         # driver 对象创建成功胡，创建等待类实例对象
         waitUtil = WaitUtil(driver)
     except Exception as e:
@@ -148,10 +150,15 @@ def switch_to_default_content(*arg):
 def paste_string(pasteString,*arg):
     # 模拟 Ctrl + V 操作
     try:
-        Clipboard.setText(pasteString)
+        # 复制
+        pyperclip.copy(pasteString)
+        #Clipboard.setText(pasteString)
+
         # 等待 2 秒，防止代码执行得太快，而未成功粘贴内容
         time.sleep(2)
-        KeyboardKeys.twoKeys("ctrl","v")
+        #KeyboardKeys.twoKeys("ctrl","v")
+        # 粘贴
+        pyperclip.paste()
     except Exception as e:
         raise e
 
@@ -215,20 +222,6 @@ def waitVisibilityOfElementLocated(locationType,locatorExpression,*arg):
         waitUtil.visibilityOfElementLocated(locationType,locatorExpression)
     except Exception as e:
         raise e
-
-
-'''
-open_browser("Chrome")
-visit_url("https://cas.env12.shuguang.com/cas/login")
-
-
-# In[6]:
-sleep(5)
-#waitFrameToBeAvailableAndSwitchToIt("xpath","//div[@class=\"form-title\"]/preceding::div")
-input_string("id","username","admin")
-
-'''
-
 
 
 
