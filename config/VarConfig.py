@@ -64,5 +64,36 @@ dataSource_isExecute = 6
 dataSource_email = 2
 dataSource_runTime = 7
 dataSource_result = 8
+# 配置代理地址
+# 无代理
+#proxy_url ='--proxy-server='
 
+# 曙光一
+# proxy_url ='--proxy-server=http://100.67.76.9:10062'
 
+# Agility NT12 环境二
+# proxy_url ='--proxy-server=http://100.67.76.9:10082'
+
+# 曙光三
+# proxy_url = '--proxy-server=http://100.67.76.9:10003'
+
+# Agility环境三超融合
+# proxy_url = '--proxy-server=http://100.67.76.9:50301'
+
+# 曙光五
+# proxy_url = '--proxy-server=http://100.67.76.9:10005'
+
+# 曙光六
+# proxy_url = '--proxy-server=http://100.67.76.9:10006'
+
+# 曙光九
+# proxy_url = '--proxy-server=http://100.67.76.9:10042'
+
+# 曙光十
+# proxy_url = '--proxy-server=http://100.67.76.9:50101'
+
+# 曙光十一
+# proxy_url = '--proxy-server=http://100.67.76.9:10002'
+
+# 曙光十二
+proxy_url = '--proxy-server=http://100.67.154.166:51201'

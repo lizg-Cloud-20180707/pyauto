@@ -4,12 +4,14 @@ from selenium import webdriver
 from config.VarConfig import ieDriverFilePath
 from config.VarConfig import chromeDriverFilePath
 from config.VarConfig import firefoxDriverFilePath
+from config.VarConfig import proxy_url
 from util.ObjectMap import getElement
 #from util.ClipboardUtil import Clipboard
 from util.KeyBoardUtil1 import KeyboardKeys
 from util.DirAndTime import *
 from util.WaitUtil import  WaitUtil
 from selenium.webdriver.chrome.options import Options
+
 
 import time
 import pyperclip
@@ -28,7 +30,7 @@ def open_browser(browserName, *arg):
         elif browserName.lower() == 'chrome':
             # 创建 Chrome 浏览器的一个 Options 实例对象
             chrome_options = Options()
-            chrome_options.add_argument('--proxy-server=http://100.67.154.166:51201')
+            chrome_options.add_argument(proxy_url)
             # 添加屏蔽 --ignore -certificate -errors 提示信息的设置参数项
             chrome_options.add_experimental_option(
                 "excludeSwitches",
@@ -224,5 +226,11 @@ def waitVisibilityOfElementLocated(locationType,locatorExpression,*arg):
         raise e
 
 
+# 测试代理用
+"""
+open_browser("chrome")
+visit_url("https://manage.env12.shuguang.com")
+time.sleep(3)
+close_browser()
 
-
+"""
